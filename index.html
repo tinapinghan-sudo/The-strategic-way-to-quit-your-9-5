@@ -153,7 +153,11 @@
   </div>
 
 <script>
-  // Single action on this page: capture the email.
+  // Single action on this page: capture the email into MailerLite.
+  // Submits via JSONP (a <script> request) so it works from a static page
+  // with no server and no CORS issues — the same method MailerLite's own embed uses.
+  var ML_SUBSCRIBE = 'https://assets.mailerlite.com/jsonp/2485267/forms/191876251654293179/subscribe';
+
   document.getElementById('captureForm').addEventListener('submit', function(e){
     e.preventDefault();
     var email = document.getElementById('email').value.trim();
@@ -161,11 +165,26 @@
       document.getElementById('email').focus();
       return;
     }
-    /* ---- TODO: send `email` to your email tool here ----
-       POST to Mailchimp / ConvertKit(Kit) / Buttondown / your form endpoint,
-       then trigger the automated email that delivers the calculator link. */
-    document.getElementById('signupInner').style.display = 'none';
-    document.getElementById('success').style.display = 'block';
+
+    function showSuccess(){
+      var inner = document.getElementById('signupInner');
+      var ok = document.getElementById('success');
+      if (inner) inner.style.display = 'none';
+      if (ok) ok.style.display = 'block';
+    }
+
+    var cb = 'ml_cb_' + Date.now();
+    window[cb] = function(){ showSuccess(); try { delete window[cb]; } catch (err) {} };
+
+    var s = document.createElement('script');
+    s.src = ML_SUBSCRIBE
+      + '?fields[email]=' + encodeURIComponent(email)
+      + '&ml-submit=1&anticsrf=true&callback=' + cb;
+    s.onerror = showSuccess;
+    document.body.appendChild(s);
+
+    // Fallback: show the confirmation even if the callback name isn't invoked.
+    setTimeout(showSuccess, 2500);
   });
 </script>
 </body>
