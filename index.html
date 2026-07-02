@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The strategic way to quit your 9-5</title>
+<meta name="description" content="A free calculator to see how long your money would last if you quit. Enter your email and I'll send it your way.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ---- Brand tokens (see BRAND-GUIDE.md) ---- */
+  :root{
+    --pine:#24453A; --pine-dark:#1B3329; --cream:#F2EDE3; --warm-white:#FBF8F2;
+    --sage:#8FA894; --mist:#C4D2C6; --taupe:#CFC6B8; --ink:#20221E;
+    --radius:12px;
+    --font-display:'Fraunces',Georgia,serif;      /* elegant serif — large headlines */
+    --font-heading:'Inter',sans-serif;             /* UI & small headings — 600/700 */
+    --font-body:'Inter',-apple-system,sans-serif;  /* body — 400 */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--pine-dark);-webkit-font-smoothing:antialiased}
+
+  /* full-bleed split: image/story left, signup right */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;min-height:100vh}
+
+  /* ---------- LEFT: cinematic story panel ---------- */
+  .panel-image{
+    position:relative;overflow:hidden;color:var(--cream);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:52px clamp(40px,4vw,72px) 52px clamp(72px,9vw,150px);
+    /* Swap in your own photo at assets/hero.jpg for the photographic look.
+       Best fit: a muted / slightly desaturated shot — movement, nature, open space.
+       Until then, the green gradient below stands in on its own. */
+    background:
+      linear-gradient(135deg, rgba(20,38,29,.86), rgba(36,69,58,.62)),
+      radial-gradient(950px 520px at 82% 12%, rgba(179,203,187,.22), transparent 60%),
+      url('assets/hero.jpg') center/cover no-repeat,
+      linear-gradient(135deg,#16281F,#2C5140);
+    background-color:#16281F;
+  }
+  .brand{
+    margin-bottom:14px;
+    font-family:var(--font-heading);font-weight:700;font-size:15px;letter-spacing:.01em;
+    color:var(--cream);display:inline-flex;align-items:center;gap:9px;opacity:.95;
+  }
+  .brand .mark{width:22px;height:22px;flex:none}
+
+  .story-block{max-width:34rem}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#B9CBBB;margin-bottom:18px}
+  h1{font-family:var(--font-display);font-weight:500;font-size:46px;line-height:1.07;letter-spacing:-.005em;color:var(--cream);margin-bottom:14px;font-optical-sizing:auto}
+  .subhead{font-size:19px;font-weight:500;color:#DCE6DD;margin-bottom:28px}
+  .story{font-size:16px;line-height:1.58;color:#E4E9E1}
+  .story p{margin-bottom:10px;max-width:46ch}
+  .story em{font-style:italic;color:#fff}
+  .signature{margin-top:16px;font-family:var(--font-display);font-style:italic;font-weight:500;font-size:19px;color:var(--cream)}
+
+  /* decorative dotted trail (echoes the "flow" motif) */
+  .trail{position:absolute;right:-40px;top:0;height:100%;width:45%;pointer-events:none;opacity:.5}
+
+  /* ---------- RIGHT: signup panel ---------- */
+  .panel-form{background:var(--warm-white);display:flex;align-items:center;justify-content:center;padding:56px 48px}
+  .form-inner{width:100%;max-width:380px}
+  .form-inner h2{font-family:var(--font-heading);font-weight:700;font-size:26px;color:var(--pine);margin-bottom:10px;line-height:1.15;letter-spacing:-.01em}
+  .form-inner .say{font-size:15.5px;color:#4a4f45;margin-bottom:24px}
+  input[type=email]{
+    width:100%;font-family:var(--font-body);font-size:16px;padding:15px 16px;
+    border:1px solid var(--taupe);border-radius:10px;background:var(--cream);color:var(--ink);margin-bottom:12px;
+  }
+  input[type=email]::placeholder{color:#8a8f83}
+  input[type=email]:focus{outline:none;border-color:var(--pine);box-shadow:0 0 0 3px rgba(36,69,58,.15)}
+  .cta{
+    width:100%;background:var(--pine);color:var(--cream);font-family:var(--font-body);font-weight:600;
+    font-size:16px;border:none;border-radius:10px;padding:15px 22px;cursor:pointer;transition:background .15s;
+  }
+  .cta:hover{background:var(--pine-dark)}
+  .reassure{font-size:12.5px;color:#7a7f74;margin-top:14px;text-align:center}
+  .fineprint{font-size:12px;color:#9a9f92;margin-top:28px;text-align:center}
+
+  .success{display:none;text-align:center}
+  .success .check{width:48px;height:48px;border-radius:999px;background:var(--pine);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 18px}
+  .success p{font-size:15px;color:#4a4f45;margin-top:8px}
+
+  @media(max-width:860px){
+    .split{grid-template-columns:1fr}
+    .panel-image{padding:52px 30px 48px}
+    h1{font-size:38px}
+    .trail{display:none}
+    .panel-form{padding:44px 26px}
+    .form-inner{max-width:440px;margin:0 auto}
+  }
+</style>
+</head>
+<body>
+  <div class="split">
+
+    <!-- LEFT: story over cinematic background -->
+    <section class="panel-image">
+      <div class="brand">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#F2EDE3" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17 18a5 5 0 0 0-10 0"/>
+          <line x1="12" y1="3" x2="12" y2="6"/>
+          <line x1="4.5" y1="8" x2="6" y2="9.5"/>
+          <line x1="19.5" y1="8" x2="18" y2="9.5"/>
+          <line x1="2" y1="18" x2="22" y2="18"/>
+          <line x1="3.5" y1="22" x2="7.5" y2="22"/>
+          <line x1="16.5" y1="22" x2="20.5" y2="22"/>
+        </svg>
+        The strategic way to quit your 9-5
+      </div>
+
+      <!-- dotted trail motif -->
+      <svg class="trail" viewBox="0 0 400 900" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M-20 760 C 220 720 340 560 300 380 C 270 240 120 200 260 40"
+              stroke="#F2EDE3" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 20"/>
+      </svg>
+
+      <div class="story-block">
+        <h1>You deserve to be happy and live a fulfilling life.</h1>
+        <div class="story">
+          <p>For three years, I stayed at my unfulfilled 9-5 job. Not because I loved it, but because I was scared.</p>
+          <p><em>What if I can't find something better? What if I run out of money?</em> The fear looped every Sunday night. I was unfulfilled, depressed, and telling myself I couldn't afford to leave.</p>
+          <p>When I actually mapped things out, I realized I already had what I needed to leave. Quitting isn't the scary part. Quitting <em>without a strategy</em> is.</p>
+          <p>So as a first step, I built this calculator to show me my financial runway — how long I could last before going back to corporate. If you're thinking about walking away from the stable 9-5, download this calculator free today.</p>
+        </div>
+        <div class="signature">— Tina Louise Chen</div>
+      </div>
+    </section>
+
+    <!-- RIGHT: signup -->
+    <section class="panel-form">
+      <div class="form-inner">
+        <div id="signupInner">
+          <h2>Get your free calculator</h2>
+          <p class="say">See your runway in a few minutes. I'll send it straight to your inbox.</p>
+          <form id="captureForm" novalidate>
+            <input type="email" id="email" placeholder="you@email.com" aria-label="Your email address" autocomplete="email">
+            <button type="submit" class="cta">Send me the calculator</button>
+          </form>
+          <p class="reassure">No spam. Unsubscribe anytime.</p>
+          <p class="fineprint">Estimates only, not financial advice.</p>
+        </div>
+
+        <div class="success" id="success" aria-live="polite">
+          <div class="check">✓</div>
+          <h2>It's on its way.</h2>
+          <p>Check your inbox for the calculator. Not there? Peek in spam and add me to your contacts.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+<script>
+  // Single action on this page: capture the email.
+  document.getElementById('captureForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+      document.getElementById('email').focus();
+      return;
+    }
+    /* ---- TODO: send `email` to your email tool here ----
+       POST to Mailchimp / ConvertKit(Kit) / Buttondown / your form endpoint,
+       then trigger the automated email that delivers the calculator link. */
+    document.getElementById('signupInner').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+  });
+</script>
+</body>
+</html>
