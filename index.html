@@ -3,36 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The strategic way to quit your 9-5</title>
-<meta name="description" content="A free calculator to see how long your money would last if you quit. Enter your email and I'll send it your way.">
+<title>Quit With a Strategy — the strategic way to quit your 9-5</title>
+<meta name="description" content="Quit With a Strategy — a handbook for when to go, how to leave with every dollar you worked for, and how to land on your feet. Join the waitlist.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   /* ---- Brand tokens (see BRAND-GUIDE.md) ---- */
   :root{
     --pine:#24453A; --pine-dark:#1B3329; --cream:#F2EDE3; --warm-white:#FBF8F2;
     --sage:#8FA894; --mist:#C4D2C6; --taupe:#CFC6B8; --ink:#20221E;
     --radius:12px;
-    --font-display:'Fraunces',Georgia,serif;      /* elegant serif — large headlines */
-    --font-heading:'Inter',sans-serif;             /* UI & small headings — 600/700 */
-    --font-body:'Inter',-apple-system,sans-serif;  /* body — 400 */
+    --font-display:'Fraunces',Georgia,serif;
+    --font-heading:'Inter',sans-serif;
+    --font-body:'Inter',-apple-system,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{font-family:var(--font-body);color:var(--ink);background:var(--pine-dark);-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
 
-  /* full-bleed split: image/story left, signup right */
-  .split{display:grid;grid-template-columns:1.05fr .95fr;min-height:100vh}
-
-  /* ---------- LEFT: cinematic story panel ---------- */
-  .panel-image{
+  /* ---------- HERO: compact story ---------- */
+  .hero{
     position:relative;overflow:hidden;color:var(--cream);
-    display:flex;flex-direction:column;justify-content:center;
-    padding:52px clamp(40px,4vw,72px) 52px clamp(72px,9vw,150px);
-    /* Swap in your own photo at assets/hero.jpg for the photographic look.
-       Best fit: a muted / slightly desaturated shot — movement, nature, open space.
-       Until then, the green gradient below stands in on its own. */
+    padding:44px 0 56px;
     background:
       linear-gradient(135deg, rgba(20,38,29,.86), rgba(36,69,58,.62)),
       radial-gradient(950px 520px at 82% 12%, rgba(179,203,187,.22), transparent 60%),
@@ -41,116 +35,319 @@
     background-color:#16281F;
   }
   .brand{
-    margin-bottom:14px;
-    font-family:var(--font-heading);font-weight:700;font-size:15px;letter-spacing:.01em;
-    color:var(--cream);display:inline-flex;align-items:center;gap:9px;opacity:.95;
+    margin-bottom:34px;
+    font-family:var(--font-heading);font-weight:700;font-size:14px;
+    color:var(--cream);display:inline-flex;align-items:center;gap:8px;opacity:.95;
   }
-  .brand .mark{width:22px;height:22px;flex:none}
-
-  .story-block{max-width:34rem}
-  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#B9CBBB;margin-bottom:18px}
-  h1{font-family:var(--font-display);font-weight:500;font-size:46px;line-height:1.07;letter-spacing:-.005em;color:var(--cream);margin-bottom:14px;font-optical-sizing:auto}
-  .subhead{font-size:19px;font-weight:500;color:#DCE6DD;margin-bottom:28px}
-  .story{font-size:16px;line-height:1.58;color:#E4E9E1}
-  .story p{margin-bottom:10px;max-width:46ch}
+  .brand .mark{width:20px;height:20px;flex:none}
+  h1{font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4.2vw,44px);line-height:1.08;letter-spacing:-.005em;color:var(--cream);margin-bottom:16px;font-optical-sizing:auto;max-width:22ch}
+  .story{font-size:15.5px;line-height:1.55;color:#E4E9E1;max-width:58ch}
+  .story p{margin-bottom:10px}
+  .story p:last-child{margin-bottom:0}
   .story em{font-style:italic;color:#fff}
-  .signature{margin-top:16px;font-family:var(--font-display);font-style:italic;font-weight:500;font-size:19px;color:var(--cream)}
+  .story strong{color:#fff;font-weight:600}
+  .hero-cta{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .btn-light{
+    display:inline-block;background:var(--warm-white);color:var(--pine);text-decoration:none;
+    font-weight:600;font-size:15.5px;border-radius:10px;padding:13px 28px;transition:background .15s;
+  }
+  .btn-light:hover{background:var(--cream)}
+  .hero-cta .hint{font-size:13px;color:#C9D6CB}
+  .trail{position:absolute;right:-30px;top:0;height:100%;width:30%;pointer-events:none;opacity:.4}
 
-  /* decorative dotted trail (echoes the "flow" motif) */
-  .trail{position:absolute;right:-40px;top:0;height:100%;width:45%;pointer-events:none;opacity:.5}
+  /* ---------- shared section bits ---------- */
+  section{padding:56px 0}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+  h2{font-family:var(--font-display);font-weight:500;font-size:clamp(26px,3.4vw,34px);line-height:1.12;letter-spacing:-.005em;color:var(--pine);margin-bottom:14px;font-optical-sizing:auto}
 
-  /* ---------- RIGHT: signup panel ---------- */
-  .panel-form{background:var(--warm-white);display:flex;align-items:center;justify-content:center;padding:56px 48px}
-  .form-inner{width:100%;max-width:380px}
-  .form-inner h2{font-family:var(--font-heading);font-weight:700;font-size:26px;color:var(--pine);margin-bottom:10px;line-height:1.15;letter-spacing:-.01em}
-  .form-inner .say{font-size:15.5px;color:#4a4f45;margin-bottom:24px}
+  /* ---------- FOR YOU IF ---------- */
+  .foryou-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
+  .foryou{
+    background:var(--warm-white);border-radius:var(--radius);padding:24px 26px;
+    box-shadow:0 2px 8px rgba(32,34,30,.06);
+  }
+  .foryou h3{font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--pine);margin-bottom:12px;letter-spacing:-.01em}
+  ul.plain{list-style:none}
+  ul.plain li{
+    font-size:14.5px;line-height:1.5;color:#3d4239;
+    padding:7px 0 7px 22px;position:relative;border-top:1px solid #EFE9DC;
+  }
+  ul.plain li:first-child{border-top:none;padding-top:0}
+  ul.plain li::before{content:"—";position:absolute;left:0;color:var(--sage)}
+  ul.plain em{font-style:italic;color:var(--pine)}
+  .stanza{
+    margin:40px auto 0;text-align:center;max-width:34rem;
+    font-family:var(--font-display);font-size:22px;line-height:1.45;color:var(--pine);
+  }
+  .stanza em{font-style:italic}
+
+  /* ---------- WALK AWAY WITH ---------- */
+  .walkaway{background:var(--warm-white)}
+  .walkaway ul.plain{max-width:44rem;margin-top:20px}
+  .walkaway ul.plain li{border-color:#F0EBE0;font-size:15px;padding:9px 0 9px 26px}
+  .walkaway ul.plain li::before{content:"✓";color:var(--sage);font-weight:700}
+
+  /* ---------- INSIDE ---------- */
+  .inside-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+  .part{
+    background:var(--warm-white);border-radius:var(--radius);padding:22px 24px;
+    box-shadow:0 2px 8px rgba(32,34,30,.06);
+  }
+  .part .num{font-family:var(--font-display);font-weight:500;font-size:21px;color:var(--sage);display:block;margin-bottom:6px}
+  .part h3{font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--pine);margin-bottom:10px;letter-spacing:-.01em}
+  .part ul.plain li{font-size:13.5px;padding:6px 0 6px 18px;color:#4a4f45}
+
+  /* ---------- TOOLS SHOWCASE ---------- */
+  .bonus{background:var(--warm-white)}
+  .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:30px;align-items:start}
+  .tool{text-align:center}
+  .preview{
+    width:100%;max-width:320px;border-radius:6px;display:block;margin:0 auto;
+    box-shadow:0 14px 34px rgba(32,34,30,.25);border:1px solid rgba(32,34,30,.08);
+  }
+  .tool .tilt-l{transform:rotate(-2deg)}
+  .tool .tilt-r{transform:rotate(2deg)}
+  .tool .tag{
+    display:inline-block;margin:22px 0 8px;padding:4px 12px;border-radius:999px;
+    font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    background:rgba(143,168,148,.18);color:var(--pine);border:1px solid var(--mist);
+  }
+  .tool h3{font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--pine);margin-bottom:6px;letter-spacing:-.01em}
+  .tool p{font-size:14px;line-height:1.55;color:#4a4f45;max-width:34ch;margin:0 auto}
+
+  /* ---------- SIGNUP ---------- */
+  .signup{
+    background:
+      radial-gradient(800px 420px at 20% 100%, rgba(143,168,148,.18), transparent 60%),
+      var(--pine-dark);
+    padding:64px 0 72px;color:var(--cream);
+  }
+  .signup-inner{max-width:560px;margin:0 auto;text-align:center;padding:0 24px}
+  .signup h2{color:var(--cream)}
+  .signup h2{margin-bottom:28px}
+  .expectation{background:var(--cream)}
+  .card{
+    background:var(--warm-white);border-radius:var(--radius);padding:28px 28px 22px;
+    box-shadow:0 2px 8px rgba(0,0,0,.18);text-align:left;color:var(--ink);
+  }
+  .card label{display:block;font-weight:600;font-size:13px;color:var(--pine);margin-bottom:8px}
   input[type=email]{
-    width:100%;font-family:var(--font-body);font-size:16px;padding:15px 16px;
+    width:100%;font-family:var(--font-body);font-size:16px;padding:14px 16px;
     border:1px solid var(--taupe);border-radius:10px;background:var(--cream);color:var(--ink);margin-bottom:12px;
   }
   input[type=email]::placeholder{color:#8a8f83}
   input[type=email]:focus{outline:none;border-color:var(--pine);box-shadow:0 0 0 3px rgba(36,69,58,.15)}
   .cta{
     width:100%;background:var(--pine);color:var(--cream);font-family:var(--font-body);font-weight:600;
-    font-size:16px;border:none;border-radius:10px;padding:15px 22px;cursor:pointer;transition:background .15s;
+    font-size:16px;border:none;border-radius:10px;padding:14px 22px;cursor:pointer;transition:background .15s;
   }
   .cta:hover{background:var(--pine-dark)}
-  .reassure{font-size:12.5px;color:#7a7f74;margin-top:14px;text-align:center}
-  .fineprint{font-size:12px;color:#9a9f92;margin-top:28px;text-align:center}
+  .reassure{font-size:12.5px;color:#7a7f74;margin-top:12px;text-align:center}
+  .fineprint{font-size:12px;color:#9aa79c;margin-top:22px;text-align:center;line-height:1.5}
+  .success{display:none;text-align:center;padding:8px 0}
+  .success .check{width:44px;height:44px;border-radius:999px;background:var(--pine);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px}
+  .success h3{font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--pine);margin-bottom:6px}
+  .success p{font-size:14.5px;color:#4a4f45}
 
-  .success{display:none;text-align:center}
-  .success .check{width:48px;height:48px;border-radius:999px;background:var(--pine);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 18px}
-  .success p{font-size:15px;color:#4a4f45;margin-top:8px}
-
-  @media(max-width:860px){
-    .split{grid-template-columns:1fr}
-    .panel-image{padding:52px 30px 48px}
-    h1{font-size:38px}
+  @media(max-width:760px){
+    .hero{padding:36px 0 44px}
+    .brand{margin-bottom:26px}
     .trail{display:none}
-    .panel-form{padding:44px 26px}
-    .form-inner{max-width:440px;margin:0 auto}
+    section{padding:44px 0}
+    .foryou-cols{grid-template-columns:1fr;gap:14px}
+    .inside-grid{grid-template-columns:1fr;gap:14px}
+    .tools-grid{grid-template-columns:1fr;gap:40px}
+    .preview{max-width:260px}
+    .stanza{font-size:19px;margin-top:32px}
+    .signup{padding:52px 0 60px}
   }
 </style>
 </head>
 <body>
-  <div class="split">
 
-    <!-- LEFT: story over cinematic background -->
-    <section class="panel-image">
+  <!-- 1 · HERO: short story + CTA -->
+  <header class="hero">
+    <svg class="trail" viewBox="0 0 400 900" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M-20 760 C 220 720 340 560 300 380 C 270 240 120 200 260 40"
+            stroke="#F2EDE3" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 20"/>
+    </svg>
+    <div class="wrap">
       <div class="brand">
         <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#F2EDE3" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M17 18a5 5 0 0 0-10 0"/>
-          <line x1="12" y1="3" x2="12" y2="6"/>
-          <line x1="4.5" y1="8" x2="6" y2="9.5"/>
-          <line x1="19.5" y1="8" x2="18" y2="9.5"/>
-          <line x1="2" y1="18" x2="22" y2="18"/>
-          <line x1="3.5" y1="22" x2="7.5" y2="22"/>
-          <line x1="16.5" y1="22" x2="20.5" y2="22"/>
+          <path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="3" x2="12" y2="6"/><line x1="4.5" y1="8" x2="6" y2="9.5"/><line x1="19.5" y1="8" x2="18" y2="9.5"/><line x1="2" y1="18" x2="22" y2="18"/><line x1="3.5" y1="22" x2="7.5" y2="22"/><line x1="16.5" y1="22" x2="20.5" y2="22"/>
         </svg>
         The strategic way to quit your 9-5
       </div>
 
-      <!-- dotted trail motif -->
-      <svg class="trail" viewBox="0 0 400 900" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path d="M-20 760 C 220 720 340 560 300 380 C 270 240 120 200 260 40"
-              stroke="#F2EDE3" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 20"/>
-      </svg>
-
-      <div class="story-block">
-        <h1>You deserve to be happy and live a fulfilling life.</h1>
-        <div class="story">
-          <p>For three years, I stayed at my unfulfilled 9-5 job. Not because I loved it, but because I was scared.</p>
-          <p><em>What if I can't find something better? What if I run out of money?</em> The fear looped every Sunday night. I was unfulfilled, depressed, and telling myself I couldn't afford to leave.</p>
-          <p>When I actually mapped things out, I realized I already had what I needed to leave. Quitting isn't the scary part. Quitting <em>without a strategy</em> is.</p>
-          <p>So as a first step, I built this calculator to show me my financial runway — how long I could last before going back to corporate. If you're thinking about walking away from the stable 9-5, download this calculator free today.</p>
-        </div>
-        <div class="signature">— Tina Louise Chen</div>
+      <h1>You deserve to be happy and live a fulfilling life.</h1>
+      <div class="story">
+        <p>Hi, I'm Tina. For three years I stayed in a 9-5 that made me miserable, because of two questions: <em>What if I can't find something better? What if I run out of money?</em></p>
+        <p>When I finally planned my exit, I learned two things. I was more ready than I thought. And I'd almost left <strong>more than $13,000</strong> on the table by picking the wrong last day.</p>
+        <p>So I wrote the guide I needed — not "how to quit" (that part's easy), but how to leave with a real strategy: every penny you worked for, the door back to corporate open, and ready for your next move.</p>
       </div>
-    </section>
+      <div class="hero-cta">
+        <a class="btn-light" href="#signup">Join the waitlist</a>
+        <span class="hint">Quit With a Strategy · launching soon</span>
+      </div>
+    </div>
+  </header>
 
-    <!-- RIGHT: signup -->
-    <section class="panel-form">
-      <div class="form-inner">
+  <!-- 2 · IS THIS YOU -->
+  <section aria-labelledby="foryou-title">
+    <div class="wrap">
+      <p class="eyebrow">Is this you?</p>
+      <h2 id="foryou-title">You want to leave, but…</h2>
+
+      <div class="foryou-cols">
+        <div class="foryou">
+          <h3>This handbook is for you if…</h3>
+          <ul class="plain">
+            <li>You don't know if you should — or when the right time is</li>
+            <li>You think you don't have enough money</li>
+            <li>You're afraid you won't find your next job</li>
+            <li>You're afraid of losing the stable income</li>
+            <li>You want to learn from someone who just walked away from her six-figure job — and exactly how she navigated the decision</li>
+          </ul>
+        </div>
+        <div class="foryou">
+          <h3>And it's especially for you if…</h3>
+          <ul class="plain">
+            <li>The Sunday scaries show up every single week</li>
+            <li>You feel deeply unfulfilled and uninspired</li>
+            <li>You've been quitting in your head for a while now</li>
+            <li>You keep checking your savings and thinking <em>maybe next year</em></li>
+            <li>You keep asking what life is really for — because deep down, you know there's a bigger purpose in you</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="stanza">Quitting doesn't have to be a leap of faith.<br>It can be <em>a plan. A timeline. A number you've actually run.</em></p>
+    </div>
+  </section>
+
+  <!-- 3 · WHAT YOU'LL WALK AWAY WITH -->
+  <section class="walkaway" aria-labelledby="walkaway-title">
+    <div class="wrap">
+      <p class="eyebrow">The outcome</p>
+      <h2 id="walkaway-title">What you'll walk away with</h2>
+      <ul class="plain">
+        <li>A real answer to "can I actually afford this?" — from a comprehensive financial calculator</li>
+        <li>An exit timed around your best compensation, so you leave at your peak earnings — not before them</li>
+        <li>The words for the manager conversation that leave a good impression, and handoff documents that make you look responsible on your way out</li>
+        <li>Prompts to gather every accomplishment into an updated resume before you lose access</li>
+        <li>Messages to keep your closest colleagues in the loop — your future network, and your way back</li>
+        <li>Honest expectations of what the first weeks and months after quitting actually feel like</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4 · WHAT'S INSIDE -->
+  <section aria-labelledby="inside-title">
+    <div class="wrap">
+      <p class="eyebrow">Coming soon · Quit With a Strategy</p>
+      <h2 id="inside-title">Here's what's inside</h2>
+
+      <div class="inside-grid">
+        <div class="part">
+          <span class="num">01</span>
+          <h3>Decide with confidence</h3>
+          <ul class="plain">
+            <li>The when-to-quit framework: mentally ready vs. practically ready</li>
+            <li>The real opportunity cost of staying vs. leaving — it's not just salary</li>
+            <li>The options nobody mentions: internal transfer, leave of absence, renegotiating your role</li>
+            <li>The Financial Runway Calculator — how long your money lasts, down to the run-out date</li>
+          </ul>
+        </div>
+        <div class="part">
+          <span class="num">02</span>
+          <h3>Leave with every dollar</h3>
+          <ul class="plain">
+            <li>How I almost lost $13,000 by picking a last day one month too early</li>
+            <li>The exit-timing worksheet: bonus dates, vesting schedule, PTO payout in one view</li>
+            <li>The 90-day stock-option trap — and other deadlines that don't care about your feelings</li>
+            <li>Benefits to use before your last day, and the ones you'd owe back</li>
+          </ul>
+        </div>
+        <div class="part">
+          <span class="num">03</span>
+          <h3>Exit gracefully</h3>
+          <ul class="plain">
+            <li>Word-for-word: how to tell your manager without burning the relationship</li>
+            <li>The resignation letter that outlives your exit — four sentences, no grievances</li>
+            <li>What to say when they counter — decide before they ask</li>
+            <li>A handover your colleagues will thank you for</li>
+          </ul>
+        </div>
+        <div class="part">
+          <span class="num">04</span>
+          <h3>Land on your feet</h3>
+          <ul class="plain">
+            <li>What the first 30 days actually feel like — and how not to drift</li>
+            <li>Your value inventory: proof you can land the next role</li>
+            <li>AI prompts to update your resume before you lose access</li>
+            <li>How to explain the gap later, without apologizing for it</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · TOOLS SHOWCASE -->
+  <section class="bonus" aria-labelledby="tools-title">
+    <div class="wrap">
+      <p class="eyebrow">A peek inside</p>
+      <h2 id="tools-title">Tools, not just chapters</h2>
+
+      <div class="tools-grid">
+        <div class="tool">
+          <img class="preview tilt-l" src="assets/calculator-preview.png" alt="The Financial Runway Calculator with detailed inputs — non-essential spending, one-time costs of quitting, income during the break, emergency buffer — and an example result: 11 months of runway, lasting until June 2027" loading="lazy">
+          <span class="tag">Included · Part 1</span>
+          <h3>The Financial Runway Calculator</h3>
+          <p>Enter your numbers, get your answer — how many months you can cover your life, down to the run-out date.</p>
+        </div>
+        <div class="tool">
+          <img class="preview tilt-r" src="assets/checklist-preview-blurred.png" alt="Blurred preview of page one of the Pre-Quit Checklist" loading="lazy">
+          <span class="tag">Launch bonus</span>
+          <h3>The Pre-Quit Checklist</h3>
+          <p>All 24 things to do before your last day — in order, on two printable pages. Leave nothing behind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · HONEST EXPECTATION -->
+  <section class="expectation" aria-labelledby="expectation-title">
+    <div class="wrap" style="max-width:640px;text-align:center">
+      <p class="eyebrow">One more honest expectation</p>
+      <h2 id="expectation-title">You might not quit right away — and that's the point.</h2>
+      <p style="font-size:16px;line-height:1.65;color:#4a4f45">What changes is the second-guessing. It stops. Whether you stay or go, you'll have run the numbers, timed it right, and thought it through so rigorously that you'll know, in your heart, you made the best decision available to you.</p>
+    </div>
+  </section>
+
+  <!-- 7 · WAITLIST -->
+  <section class="signup" id="signup" aria-labelledby="signup-title">
+    <div class="signup-inner">
+      <h2 id="signup-title">Launching soon. The waitlist gets it first.</h2>
+
+      <div class="card">
         <div id="signupInner">
-          <h2>Get your free calculator</h2>
-          <p class="say">See your runway in a few minutes. I'll send it straight to your inbox.</p>
           <form id="captureForm" novalidate>
-            <input type="email" id="email" placeholder="you@email.com" aria-label="Your email address" autocomplete="email">
-            <button type="submit" class="cta">Send me the calculator</button>
+            <label for="email">Your email — I'll let you know the moment it's ready.</label>
+            <input type="email" id="email" placeholder="you@email.com" autocomplete="email">
+            <button type="submit" class="cta">Join the waitlist</button>
           </form>
           <p class="reassure">No spam. Unsubscribe anytime.</p>
-          <p class="fineprint">Estimates only, not financial advice.</p>
         </div>
-
         <div class="success" id="success" aria-live="polite">
           <div class="check">✓</div>
-          <h2>It's on its way.</h2>
-          <p>Check your inbox for the calculator. Not there? Peek in spam and add me to your contacts.</p>
+          <h3>You're on the list.</h3>
+          <p>You'll hear from me first when the handbook is ready — with the Pre-Quit Checklist included. Add me to your contacts so I don't land in spam.</p>
         </div>
       </div>
-    </section>
 
-  </div>
+      <p class="fineprint">Not financial or legal advice, and I won't promise quitting is right for you — Part 1 exists because sometimes it isn't. This is exactly what I did, step by step.</p>
+    </div>
+  </section>
 
 <script>
   // Single action on this page: capture the email into MailerLite.
