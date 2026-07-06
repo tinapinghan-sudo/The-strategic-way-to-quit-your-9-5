@@ -83,12 +83,6 @@
   }
   .part ul.plain li strong{color:var(--pine-dark);font-weight:600}
 
-  /* ---------- WALK AWAY WITH ---------- */
-  .walkaway{background:var(--warm-white)}
-  .walkaway ul.plain{max-width:44rem;margin-top:20px}
-  .walkaway ul.plain li{border-color:#F0EBE0;font-size:15px;padding:9px 0 9px 26px}
-  .walkaway ul.plain li::before{content:"✓";color:var(--sage);font-weight:700}
-
   /* ---------- INSIDE ---------- */
   .inside-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
   .part{
@@ -133,6 +127,7 @@
     box-shadow:0 2px 8px rgba(0,0,0,.18);text-align:left;color:var(--ink);
   }
   .card label{display:block;font-weight:600;font-size:13px;color:var(--pine);margin-bottom:8px}
+  .roi-note{font-size:13.5px;line-height:1.55;color:#4a4f45;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #EFE9DC}
   input[type=email]{
     width:100%;font-family:var(--font-body);font-size:16px;padding:14px 16px;
     border:1px solid var(--taupe);border-radius:10px;background:var(--cream);color:var(--ink);margin-bottom:12px;
@@ -227,23 +222,7 @@
     </div>
   </section>
 
-  <!-- 3 · WHAT YOU'LL WALK AWAY WITH -->
-  <section class="walkaway" aria-labelledby="walkaway-title">
-    <div class="wrap">
-      <p class="eyebrow">The outcome</p>
-      <h2 id="walkaway-title">What you'll walk away with</h2>
-      <ul class="plain">
-        <li>A real answer to "can I actually afford this?" — from a comprehensive financial calculator</li>
-        <li>An exit timed around your best compensation, so you leave at your peak earnings — not before them</li>
-        <li>The words for the manager conversation that leave a good impression, and handoff documents that make you look responsible on your way out</li>
-        <li>Prompts to gather every accomplishment into an updated resume before you lose access</li>
-        <li>Messages to keep your closest colleagues in the loop — your future network, and your way back</li>
-        <li>Honest expectations of what the first weeks and months after quitting actually feel like</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 4 · WHAT'S INSIDE -->
+  <!-- 3 · WHAT'S INSIDE -->
   <section aria-labelledby="inside-title">
     <div class="wrap">
       <p class="eyebrow">Coming soon · Quit With a Strategy</p>
@@ -284,7 +263,7 @@
           <span class="num">04</span>
           <h3>Land on your feet</h3>
           <ul class="plain">
-            <li>What the first 30 days actually feel like — and how not to drift</li>
+            <li><span class="tool-tag">30-Day Blueprint</span><strong>The First Month</strong> — what the first 30 days actually feel like, and how to structure your time so you don't drift</li>
             <li><span class="tool-tag">Guided Worksheet</span><strong>The Value Inventory</strong> — proof you can land the next role</li>
             <li><span class="tool-tag">AI Prompt Pack</span><strong>Resume Prompts</strong> — capture your accomplishments before you lose access</li>
             <li>How to explain the gap later, without apologizing for it</li>
@@ -333,6 +312,7 @@
 
       <div class="card">
         <div id="signupInner">
+          <p class="roi-note">For less than the cost of a single casual dinner out, protect thousands in unvested stocks, bonuses, and overlooked PTO payouts. It's the highest-ROI investment you'll make all year.</p>
           <form id="captureForm" novalidate>
             <label for="email">Your email — I'll let you know the moment it's ready.</label>
             <input type="email" id="email" placeholder="you@email.com" autocomplete="email">
