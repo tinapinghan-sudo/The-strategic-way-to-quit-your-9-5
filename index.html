@@ -73,11 +73,15 @@
 
   /* ---------- FOR YOU IF ---------- */
   .foryou{
-    background:var(--warm-white);border-radius:var(--radius);padding:30px 34px;
+    background:var(--warm-white);border-radius:var(--radius);padding:42px 52px 36px;
     box-shadow:0 2px 8px rgba(32,34,30,.06);
-    max-width:640px;margin:26px auto 0;
+    margin:26px 0 0;
   }
-  .foryou h3{font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--pine);margin-bottom:14px;letter-spacing:-.01em}
+  .foryou h3{font-family:var(--font-heading);font-weight:700;font-size:18px;color:var(--pine);margin-bottom:16px;letter-spacing:-.01em}
+  .foryou ul.plain li{font-size:15.5px;padding:10px 0 10px 26px}
+  @media(max-width:768px){
+    .foryou{padding:28px 22px 24px}
+  }
   ul.plain{list-style:none}
   ul.plain li{
     font-size:14.5px;line-height:1.5;color:#3d4239;
