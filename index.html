@@ -50,11 +50,9 @@
     display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:flex-start;
     margin-top:8px;
   }
-  .hero-portrait{
-    width:100%;max-width:300px;aspect-ratio:2/3;border-radius:8px;align-self:flex-start;
-    background:
-      url('assets/hero-portrait.jpg') center/cover no-repeat,
-      linear-gradient(160deg, rgba(143,168,148,.35), rgba(196,210,198,.15));
+  .hero-video{
+    width:100%;max-width:300px;aspect-ratio:9/16;border-radius:8px;align-self:flex-start;
+    object-fit:cover;display:block;background:#16281F;
     box-shadow:0 18px 44px rgba(0,0,0,.28);
   }
   .hero-cta{margin-top:24px;display:flex;flex-direction:column;align-items:flex-start;gap:0}
@@ -179,7 +177,7 @@
     .hero{padding:36px 0 44px;margin-bottom:0}
     .brand{margin-bottom:26px}
     .hero-grid{grid-template-columns:1fr;gap:32px}
-    .hero-portrait{margin:0 auto}
+    .hero-video{margin:0 auto}
     .trail{display:none}
     section{padding:44px 0}
     .inside-grid{grid-template-columns:1fr;gap:14px}
@@ -221,7 +219,10 @@
           </div>
         </div>
 
-        <div class="hero-portrait" role="img" aria-label="Tina Louise Chen smiling at an outdoor café table"></div>
+        <video class="hero-video" controls preload="none" playsinline poster="assets/hero-video-poster.jpg" title="Tina introduces Exit With a Strategy">
+          <source src="assets/hero-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </header>
